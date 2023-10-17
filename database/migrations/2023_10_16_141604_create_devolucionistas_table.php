@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('devolucionistas', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->date('data_nascimento');
+            $table->foreignId('endereco_id')
+                ->constrained('enderecos')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
             $table->timestamps();
         });
     }

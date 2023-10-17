@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('devolucaos', function (Blueprint $table) {
             $table->id();
+            $table->decimal('valor');
+            $table->date('data_pagamento');
+            $table->foreignId('devolucionista_id')
+                ->constrained('devolucionistas')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
             $table->timestamps();
         });
     }
